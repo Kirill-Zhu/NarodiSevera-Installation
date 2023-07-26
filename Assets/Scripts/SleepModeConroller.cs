@@ -22,13 +22,17 @@ public class SleepModeConroller : MonoBehaviour
     public void SetSleepMode()
     {
         if(!IsInSleepMode)
-        StartCoroutine(SetSleepModeCourotine());
+        {
+            _isInSleepMode = true;
+            StartCoroutine(SetSleepModeCourotine());
+        }
+           
     }
     private IEnumerator SetSleepModeCourotine()
     {
-        _isInSleepMode = true;
+        
 
-        if (_canvasGroup.alpha < 1)
+        if (_canvasGroup.alpha < 1&&_isInSleepMode)
         {
           
             yield return new WaitForFixedUpdate();
